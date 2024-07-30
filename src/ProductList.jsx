@@ -1,12 +1,12 @@
-import React, { useState,useEffect } from 'react';
-import './ProductList.css'
+import React, { useState } from 'react';
+import './ProductList.css';
 import CartItem from './CartItem';
-import { createSlice } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { addItem } from './CartSlice';
+
 function ProductList() {
-    const [showCart, setShowCart] = useState(false); 
-    const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    const [showCart, setShowCart] = useState(false);
+    const [showPlants, setShowPlants] = useState(false);
 
     const plantsArray = [
         {
@@ -95,14 +95,14 @@ function ProductList() {
             category: "Insect Repellent Plants",
             plants: [
                 {
-                    name: "oregano",
+                    name: "Oregano",
                     image: "https://cdn.pixabay.com/photo/2015/05/30/21/20/oregano-790702_1280.jpg",
                     description: "The oregano plants contains compounds that can deter certain insects.",
                     cost: "$10"
                 },
                 {
                     name: "Marigold",
-                    image:"https://cdn.pixabay.com/photo/2022/02/22/05/45/marigold-7028063_1280.jpg",
+                    image: "https://cdn.pixabay.com/photo/2022/02/22/05/45/marigold-7028063_1280.jpg",
                     description: "Natural insect repellent, also adds color to the garden.",
                     cost: "$8"
                 },
@@ -215,6 +215,7 @@ function ProductList() {
             ]
         }
     ];
+
     const styleObj = {
         backgroundColor: '#4CAF50',
         color: '#fff!important',
@@ -224,12 +225,14 @@ function ProductList() {
         alignItems: 'center',
         fontSize: '20px',
     };
+
     const styleObjUl = {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '1100px',
     };
+
     const styleA = {
         color: 'white',
         fontSize: '30px',
@@ -238,7 +241,7 @@ function ProductList() {
 
     const dispatch = useDispatch();
 
-   const handleCartClick = (e) => {
+    const handleCartClick = (e) => {
         e.preventDefault();
         setShowCart(true);
         setShowPlants(false);
@@ -265,7 +268,7 @@ function ProductList() {
             <div className="navbar" style={styleObj}>
                 <div className="tag">
                     <div className="luxury">
-                        <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
+                        <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="Paradise Nursery" />
                         <a href="/" style={{ textDecoration: 'none' }}>
                             <div>
                                 <h3 style={{ color: 'white' }}>Paradise Nursery</h3>
@@ -275,8 +278,8 @@ function ProductList() {
                     </div>
                 </div>
                 <div style={styleObjUl}>
-                    <div> <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
-                    <div> <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
+                    <div><a href="#" onClick={handlePlantsClick} style={styleA}>Plants</a></div>
+                    <div><a href="#" onClick={handleCartClick} style={styleA}>
                         <h1 className='cart'>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" height="68" width="68">
                                 <rect width="256" height="256" fill="none"></rect>
@@ -294,7 +297,7 @@ function ProductList() {
                     {plantsArray.map((category, index) => (
                         <div key={index}>
                             <h1>{category.category}</h1>
-                            <div className="product-list">
+                            <div className="product-grid">
                                 {category.plants.map((plant, plantIndex) => (
                                     <div className="product-card" key={plantIndex}>
                                         <img className="product-image" src={plant.image} alt={plant.name} />
